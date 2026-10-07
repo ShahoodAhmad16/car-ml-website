@@ -1,0 +1,202 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Car Predictor</title>
+
+    <link rel="stylesheet" href="{% static 'predictor/style.css' %}">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+
+        <div class="logo">
+            🚘 Car <span>Predictor</span>
+        </div>
+
+        <div class="tagline">
+            Better Data &nbsp;•&nbsp; Smarter Decisions
+        </div>
+
+    </nav>
+
+
+    <!-- Main Content -->
+    <div class="container">
+
+        <!-- Header -->
+        <div class="header">
+
+            <div class="car-icon">
+                🚘
+            </div>
+
+            <h1>
+                Car <span>Evaluation</span>
+            </h1>
+
+            <p>
+                Enter the car details below to predict its class.
+            </p>
+
+        </div>
+
+
+        <!-- Form Card -->
+        <div class="card">
+
+            <form method="POST">
+
+                {% csrf_token %}
+
+
+                <!-- Buying Price -->
+                <div class="form-group">
+
+                    <label for="buying">
+                        💰 Buying Price
+                    </label>
+
+                    <select name="buying" id="buying">
+
+                        <option value="low">Low</option>
+                        <option value="med">Medium</option>
+                        <option value="high">High</option>
+                        <option value="vhigh">Very High</option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- Maintenance -->
+                <div class="form-group">
+
+                    <label for="maint">
+                        🔧 Maintenance Cost
+                    </label>
+
+                    <select name="maint" id="maint">
+
+                        <option value="low">Low</option>
+                        <option value="med">Medium</option>
+                        <option value="high">High</option>
+                        <option value="vhigh">Very High</option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- Doors -->
+                <div class="form-group">
+
+                    <label for="doors">
+                        🚪 Number of Doors
+                    </label>
+
+                    <select name="doors" id="doors">
+
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5more">5 or more</option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- Persons -->
+                <div class="form-group">
+
+                    <label for="persons">
+                        👥 Number of Persons
+                    </label>
+
+                    <select name="persons" id="persons">
+
+                        <option value="2">2</option>
+                        <option value="4">4</option>
+                        <option value="more">More than 4</option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- Luggage -->
+                <div class="form-group">
+
+                    <label for="lug_boot">
+                        🧳 Luggage Boot Size
+                    </label>
+
+                    <select name="lug_boot" id="lug_boot">
+
+                        <option value="small">Small</option>
+                        <option value="med">Medium</option>
+                        <option value="big">Big</option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- Safety -->
+                <div class="form-group">
+
+                    <label for="safety">
+                        🛡️ Safety Level
+                    </label>
+
+                    <select name="safety" id="safety">
+
+                        <option value="low">Low</option>
+                        <option value="med">Medium</option>
+                        <option value="high">High</option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- Button -->
+                <button type="submit">
+                    🚘 &nbsp; Predict
+                </button>
+
+            </form>
+
+
+            <!-- Prediction Result -->
+            {% if result %}
+
+            <div class="result">
+
+                <div class="result-title">
+                    Prediction Result
+                </div>
+
+                <div class="result-value">
+                    {{ result }}
+                </div>
+
+            </div>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
